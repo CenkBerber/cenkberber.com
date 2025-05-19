@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="description" content="Cenk Berber - Portföy">
+    <title data-tr="page-title">CB | Portföy</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- AOS Animasyon Kütüphanesi -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+    <div class="welcome-overlay">
+        <div class="welcome-content">
+            <div class="welcome-logo">CB</div>
+            <div class="welcome-text" data-tr="welcome">Hoş Geldiniz</div>
+            <div class="welcome-progress-container">
+                <div class="welcome-progress"></div>
+            </div>
+            <div class="welcome-stats">
+                <div class="welcome-stat">
+                    <div class="welcome-stat-value">100%</div>
+                    <div class="welcome-stat-label" data-tr="performance">Performans</div>
+                </div>
+                <div class="welcome-stat">
+                    <div class="welcome-stat-value">0.1s</div>
+                    <div class="welcome-stat-label" data-tr="loading">Yükleme</div>
+                </div>
+                <div class="welcome-stat">
+                    <div class="welcome-stat-value">∞</div>
+                    <div class="welcome-stat-label" data-tr="experience">Deneyim</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <header>
+        <nav>
+            <div class="nav-links">
+                <a href="#hero" class="nav-link" data-tr="home">
+                    <i class="fas fa-home"></i>
+                    <span data-tr="home">Ana Sayfa</span>
+                </a>
+                <a href="#about" class="nav-link" data-tr="about">
+                    <i class="fas fa-user"></i>
+                    <span data-tr="about">Hakkımda</span>
+                </a>
+                <a href="#projects" class="nav-link" data-tr="projects">
+                    <i class="fas fa-code"></i>
+                    <span data-tr="projects">Projeler</span>
+                </a>
+                <a href="#contact" class="nav-link" data-tr="contact">
+                    <i class="fas fa-envelope"></i>
+                    <span data-tr="contact">İletişim</span>
+                </a>
+                <a href="#" class="nav-link" id="galleryTrigger" data-tr="gallery">
+                    <i class="fas fa-images"></i>
+                    <span data-tr="gallery">Galeri</span>
+                </a>
+            </div>
+            <div class="nav-controls">
+                <button id="darkModeToggle" class="theme-toggle" aria-label="Tema Değiştir">
+                    <div class="theme-toggle-track">
+                        <div class="theme-toggle-icon">
+                            <!-- Güneş ikonu -->
+                            <svg class="sun-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 17C14.7614 17 17 14.7614 17 12C17 9.23858 14.7614 7 12 7C9.23858 7 7 9.23858 7 12C7 14.7614 9.23858 17 12 17Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M12 1V3M12 21V23M4.22 4.22L5.64 5.64M18.36 18.36L19.78 19.78M1 12H3M21 12H23M4.22 19.78L5.64 18.36M18.36 5.64L19.78 4.22" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <!-- Ay ikonu -->
+                            <svg class="moon-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <span class="theme-toggle-text" data-tr="theme">Tema</span>
+                    </div>
+                </button>
+                <button id="languageToggle" class="theme-toggle" aria-label="Dil Değiştir">
+                    <div class="theme-toggle-track">
+                        <div class="theme-toggle-icon">
+                            <svg class="language-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M2 12H22" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M12 2C14.5013 4.73835 15.9228 8.29203 16 12C15.9228 15.708 14.5013 19.2616 12 22C9.49872 19.2616 8.07725 15.708 8 12C8.07725 8.29203 9.49872 4.73835 12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <span class="language-text">TR</span>
+                        </div>
+                        <span class="theme-toggle-text" data-tr="language">Dil</span>
+                    </div>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Minimap İndikatör -->
+    <div class="minimap-indicator">
+        <div class="minimap-container"></div>
+        <div class="minimap-dots">
+            <div class="minimap-dot" data-section="hero" title="Ana Sayfa"></div>
+            <div class="minimap-dot" data-section="about" title="Hakkımda"></div>
+            <div class="minimap-dot" data-section="projects" title="Projeler"></div>
+            <div class="minimap-dot" data-section="contact" title="İletişim"></div>
+        </div>
+    </div>
+
+    <main>
+        <section class="hero" id="hero">
+            <div class="floating-icons">
+                <div class="icon-item">⚡</div>
+                <div class="icon-item">🎨</div>
+                <div class="icon-item">💻</div>
+                <div class="icon-item">🚀</div>
+                <div class="icon-item">✨</div>
+                <div class="icon-item">🎯</div>
+                <div class="icon-item">💡</div>
+                <div class="icon-item">🔮</div>
+                <div class="icon-item">🛠️</div>
+                <div class="icon-item">📱</div>
+                <div class="icon-item">🎮</div>
+                <div class="icon-item">🔍</div>
+                <div class="icon-item">⚙️</div>
+                <div class="icon-item">📊</div>
+                <div class="icon-item">🎵</div>
+                <div class="icon-item">🌟</div>
+                <div class="icon-item">💫</div>
+                <div class="icon-item">🔥</div>
+                <div class="icon-item">💪</div>
+                <div class="icon-item">🎪</div>
+                <div class="icon-item">🎭</div>
+                <div class="icon-item">🎬</div>
+                <div class="icon-item">🎤</div>
+                <div class="icon-item">🎸</div>
+                <div class="icon-item">🎹</div>
+                <div class="icon-item">🎨</div>
+                <div class="icon-item">🖌️</div>
+                <div class="icon-item">🎯</div>
+                <div class="icon-item">🎲</div>
+                <div class="icon-item">🎮</div>
+            </div>
+            <div class="hero-blur-overlay"></div>
+            <div class="hero-container">
+                <div class="hero-content">
+                    <div class="hero-left">
+                        <div class="hero-greeting-wrapper">
+                            <span class="hero-emoji">👋</span>
+                            <span class="hero-greeting" data-tr="hello">Merhaba, Ben</span>
+                            <span class="hero-name"><b>Cenk</b></span>
+                        </div>
+                        <h1 class="hero-title" data-text="Fikirleri Piksellere Dönüştürüyorum" data-tr="hero-title">Fikirleri Piksellere Dönüştürüyorum</h1>
+                        <h2 class="hero-subtitle" data-tr="hero-subtitle">Yazılım Geliştiricisi ve Web Tasarımcısı</h2>
+                        <div class="hero-description">
+                            <p class="hero-bio" data-tr="hero-bio">Modern web tasarımları ve Windows sistemleri konusunda uzmanlaşmış bir yazılım geliştiricisiyim.</p>
+                        </div>
+                        <div class="hero-actions">
+                            <a href="#contact" class="hero-button primary" data-tr="contact-me">
+                                İletişime Geç
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                    <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </a>
+                            <a href="#projects" class="hero-button secondary" data-tr="view-projects">Projeleri İncele</a>
+                        </div>
+                    </div>
+                    <div class="hero-right">
+                        <div class="hero-image-wrapper">
+                            <div class="flip-card">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front">
+                                        <img src="./media/hero.jpg" alt="Cenk" class="hero-image">
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <div class="back-content">
+                                            <h3 data-tr="lets-work">Birlikte Çalışalım!</h3>
+                            
+                                            <div class="back-stats">
+                                                <div class="stat">
+                                                    <span class="stat-number">3+</span>
+                                                    <span class="stat-label" data-tr="years-experience">Yıl Deneyim</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="about-section" id="about">
+            <div class="container">
+                <h2 class="section-title" data-aos="fade-down" data-tr="about">Hakkımda</h2>
+                <div class="about-content">
+                    <div class="about-text" data-aos="fade-right">
+                        <h3 data-tr="about-title">Akıcı animasyonlara bayılıyorum!</h3>
+                        <p data-tr="about-text-1">Merhaba! Ben Cenk Berber. Modern ve kullanıcı dostu web arayüzleri geliştiren tutkulu bir web geliştiricisiyim.</p>
+                        <p data-tr="about-text-2">Web arayüzleri geliştirmemin yanı sıra, özel olarak temiz ve akıcı bir kullanıcı deneyimi sunan özelleştirilmiş Windows imajları oluşturuyorum.</p>
+                        <p data-tr="about-text-3">Akıcı animasyonlar, kaliteli kullanıcı deneyimi ve göze hitap eden tasarımlar gibi konularla ilgilenmemin yanı sıra mobil fotoğrafçılık ile ilgileniyorum.</p>
+                        <button id="aboutGalleryTrigger" class="hero-button primary" data-tr="view-gallery">
+                            Galeriye Git
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="skills-container" data-aos="fade-left">
+                        <h3 data-tr="skills">Yeteneklerim</h3>
+                        <div class="skills-grid">
+                            <div class="skill-category">
+                                <h4 data-tr="frontend">Frontend ve Tasarım</h4>
+                                <div class="skills">
+                                    <span class="skill-tag">HTML5</span>
+                                    <span class="skill-tag">CSS3</span>
+                                    <span class="skill-tag">JavaScript</span>
+                                    <span class="skill-tag">Webflow</span>
+                                    <span class="skill-tag">Vercel</span>
+                                </div>
+                            </div>
+                            <div class="skill-category">
+                                <h4 data-tr="programming">Programlama Dilleri</h4>
+                                <div class="skills">
+                                    <span class="skill-tag">Java</span>
+                                    <span class="skill-tag">Python</span>
+                                    <span class="skill-tag">C#</span>
+                                </div>
+                            </div>
+                            <div class="skill-category">
+                                <h4 data-tr="hobbies">Hobi Olarak</h4>
+                                <div class="skills">
+                                    <span class="skill-tag" data-tr="windows">Microsoft Windows</span>
+                                    <span class="skill-tag" data-tr="ai">Yapay Zeka Teknolojileri</span>
+                                    <span class="skill-tag" data-tr="automation">Otomasyon Yazılımları</span>
+                                    <span class="skill-tag" data-tr="robotics">Robotik Kodlama</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="projects-section" id="projects">
+            <div class="container">
+                <h2 class="section-title" data-aos="fade-up" data-tr="projects">Projelerim</h2>
+                <div class="projects-grid">
+                    <article class="project-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="project-image">
+                            <img src="./media/project1.jpg" alt="Proje 1" loading="lazy">
+                            <div class="project-overlay">
+                                <div class="project-links">
+                                    <a href="https://github.com/CenkBerber/cenkberber.com" target="_blank" class="project-link"><i class="fab fa-github"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 data-tr="project1-title">Proje 1</h3>
+                            <p data-tr="project1-desc">Proje açıklaması...</p>
+                            <div class="project-tags">
+                                <span>HTML</span>
+                                <span>CSS</span>
+                                <span>JavaScript</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="project-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="project-image">
+                            <img src="./media/project2.jpg" alt="Proje 2" loading="lazy">
+                            <div class="project-overlay">
+                                <div class="project-links">
+                                    <a href="https://frc-events.firstinspires.org/team/7134" target="_blank" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 data-tr="project2-title">Proje 2</h3>
+                            <p data-tr="project2-desc">Proje açıklaması...</p>
+                            <div class="project-tags">
+                                <span>Java</span>
+                                <span>FRC</span>
+                                <span>Shanghai, China</span>
+                                <span>Houston,TX - USA</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact-section" id="contact">
+            <div class="container">
+                <h2 class="section-title" data-aos="fade-up" data-tr="contact">İletişim</h2>
+                <div class="contact-content">
+                    <div class="contact-text" data-aos="fade-up">
+                        <h3 data-tr="lets-work-together">Birlikte Çalışalım</h3>
+                        <p data-tr="contact-description">Projeniz veya iş birliği fırsatları için benimle iletişime geçebilirsiniz.</p>
+                    </div>
+                    <div class="contact-grid">
+                        <a href="mailto:cenk.berber@outlook.com" class="contact-item" data-aos="fade-up" data-aos-delay="100">
+                            <i class="fas fa-envelope"></i>
+                            <h3 data-tr="email">E-posta</h3>
+                            <p>cenk.berber@outlook.com</p>
+                        </a>
+                        <a href="https://www.linkedin.com/in/cenk-berber/" target="_blank" class="contact-item" data-aos="fade-up" data-aos-delay="200">
+                            <i class="fab fa-linkedin"></i>
+                            <h3 data-tr="linkedin">LinkedIn</h3>
+                            <p>Cenk Berber</p>
+                        </a>
+                        <a href="https://x.com/cenkbrbr" target="_blank" class="contact-item" data-aos="fade-up" data-aos-delay="300">
+                            <i class="fab fa-twitter">&nbsp;&nbsp;</i><i class="fab fa-x"></i>
+                            <h3 data-tr="twitter">Twitter / X</h3>
+                            <p>@cenkbrbr</p>
+                        </a>
+                        <a href="https://t.me/cenkberber" target="_blank" class="contact-item" data-aos="fade-up" data-aos-delay="400">
+                            <i class="fab fa-telegram"></i>
+                            <h3 data-tr="telegram">Telegram</h3>
+                            <p>@cenkberber</p>
+                        </a>
+                        <a href="https://github.com/cenkberber" target="_blank" class="contact-item" data-aos="fade-up" data-aos-delay="500">
+                            <i class="fab fa-github"></i>
+                            <h3 data-tr="github">GitHub</h3>
+                            <p>github.com/cenkberber</p>
+                        </a>
+                        <div class="contact-item" data-aos="fade-up" data-aos-delay="600">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <h3 data-tr="location">Konum</h3>
+                            <p data-tr="city">İzmit, Kocaeli</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Galeri Overlay yapısı -->
+    <div class="gallery-overlay">
+        <button class="gallery-close">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </button>
+        <div class="gallery-content">
+            <iframe src="about:blank" id="galleryFrame" frameborder="0"></iframe>
+        </div>
+    </div>
+    <footer>
+        <p data-tr="copyright">&copy; 2025 Cenk Berber. Tüm hakları saklıdır.</p>
+    </footer>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.27/bundled/lenis.min.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script src="./js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,329 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+
+    user-select: none;
+    -webkit-user-select: none;
+    overflow-x: hidden;
+    cursor: default;
+
+    /* Dikey kaydırma çubuğunu gizle */
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+}
+
+/* Dikey kaydırma çubuğunu gizle - Chrome, Safari ve Opera */
+body::-webkit-scrollbar,
+html::-webkit-scrollbar {
+    display: none;
+}
+
+.gallery-container {
+    position: fixed;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    transform: translateY(-50%);
+    overflow: hidden;
+}
+
+.gallery {
+    position: absolute;
+    height: 100%;
+    padding: 0 calc(50% - clamp(80px, 10vw, 100px));
+    padding-left: calc(50% - clamp(80px, 10vw, 100px) + clamp(25px, 5vw, 50px));
+    display: flex;
+    align-items: center;
+    will-change: transform;
+    touch-action: none;
+}
+
+.gallery img {
+    position: relative;
+    width: clamp(80px, 10vw, 200px);
+    height: clamp(200px, 30vh, 250px);
+    object-fit: cover;
+    border-radius: clamp(0.5rem, 1vw, 1rem);
+    margin-right: clamp(2px, 0.5vw, 4px);
+    user-select: none;
+    -webkit-user-drag: none;
+    will-change: transform;
+    transform-origin: center;
+    transition: all 0.8s cubic-bezier(0.20, 1, 0.25, 1);
+}
+
+/* Modal animasyon stilleri */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2000;
+    pointer-events: none;
+}
+
+.modal.active {
+    pointer-events: auto;
+}
+
+.modal-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    opacity: 0;
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.modal-container {
+    position: absolute;
+    overflow: hidden;
+    
+    opacity: 0;
+    will-change: transform, width, height, top, left;
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+}
+
+.modal.active .modal-container {
+    opacity: 1;
+}
+
+.modal.active .modal-overlay {
+    opacity: 1;
+}
+
+.modal-image {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    
+    transform: scale(1);
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.modal.active .modal-image {
+    transform: scale(1);
+}
+
+.modal-info {
+    transform: translateY(30px);
+    opacity: 0;
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    transition-delay: 0.2s;
+}
+
+.modal.active .modal-info {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.modal-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    left: 15px;
+    width: 32px;
+    height: 32px;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    color: white;
+    font-size: 20px;
+
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    padding: 0;
+}
+
+.modal-close:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+}
+
+.modal-close:active {
+    transform: scale(0.95);
+}
+
+/* Kapanış animasyonlarını güncelle */
+.modal.closing .modal-container {
+    opacity: 0 !important;
+
+    transition: all 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.modal.closing .modal-overlay {
+    opacity: 0;
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+
+.modal.closing .modal-nav {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal.closing .modal-image {
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (max-width: 768px) {
+    .modal-close {
+        top: 10px;
+        right: 10px;
+        left: 10px;
+        width: 28px;
+        height: 28px;
+        font-size: 18px;
+    }
+
+    /* Ok butonlarını gizle */
+    .modal-nav {
+        display: none;
+    }
+
+    /* Mobil görünümde galeri dikey sıralama */
+    .gallery-container {
+        position: fixed; /* Fixed pozisyonu kaldır */
+        top: auto;
+        left: auto;
+        width: 100%;
+        height: 100%; /* Yüksekliği otomatik yap */
+        transform: none; /* Transformu kaldır */
+        overflow: auto; /* Dikey kaydırmaya izin ver */
+        min-height: 100vh; /* Sayfa yüksekliği kadar minimum yükseklik */
+        padding-top: 20px; /* Üstten boşluk */
+
+        /* Scrollbar'ı gizle */
+        -ms-overflow-style: none;  /* Internet Explorer 10+ */
+        scrollbar-width: none;  /* Firefox */
+    }
+
+    /* Scrollbar'ı gizle - Chrome, Safari ve Opera */
+    .gallery-container::-webkit-scrollbar {
+        display: none;
+    }
+
+    .gallery {
+        position: static; /* Absolute pozisyonu kaldır */
+        display: block; /* Resimleri alt alta sırala */
+        padding: 0 10px; /* Yatay paddingi ayarla */
+        width: auto !important; /* Genişliği otomatik yap ve inline stilini ez */
+        will-change: auto; /* will-change kaldır */
+        touch-action: auto; /* touch-action kaldır */
+        transform: none !important; /* JavaScript transformunu ez */
+    }
+
+    .gallery img {
+        position: static; /* Absolute pozisyonu kaldır */
+        display: block; /* Resmi blok element yap */
+        width: 95%; /* Ekran genişliğinin %95'i */
+        height: auto; /* Yüksekliği otomatik ayarla */
+        margin: 20px auto 5px auto; /* Dikey boşluk ve ortala */
+        transform: none !important; /* JavaScript transformunu ez */
+        left: auto !important; /* JavaScript left stilini ez */
+        top: auto !important; /* JavaScript top stilini ez */
+        transition: none !important; /* JavaScript geçişlerini ez */
+        border-radius: clamp(0.5rem, 1vw, 1rem); /* Border radiusu koru */
+        /* margin-right kaldırılacak veya sıfırlanacak */
+        margin-right: auto;
+    }
+
+    .modal-container {
+        transition: opacity 0.3s ease !important;
+    }
+
+    .modal-info {
+        transition: transform 0.3s ease, opacity 0.3s ease !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .gallery img {
+        width: clamp(50px, 7vw, 60px);
+        height: clamp(120px, 20vh, 150px);
+    }
+}
+
+/* Touch cihazlar için özel düzenlemeler */
+@media (hover: none) {
+    .gallery img {
+        cursor: default;
+    }
+
+    .gallery-container {
+        cursor: default;
+    }
+}
+
+/* Yüksek DPI ekranlar için optimizasyon */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .gallery img {
+        image-rendering: -webkit-optimize-contrast;
+    }
+}
+
+
+.modal-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    z-index: 2;
+    font-size: 20px;
+    transition: all 0.3s ease;
+    opacity: 0;
+}
+
+.modal.active .modal-nav {
+    opacity: 1;
+}
+
+.modal-nav:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.modal-prev {
+    left: -60px;
+}
+
+.modal-next {
+    right: -60px;
+}
+
+@media (max-width: 768px) {
+    .modal-nav {
+        width: 35px;
+        height: 35px;
+        font-size: 18px;
+    }
+
+    .modal-prev {
+        left: 10px;
+    }
+
+    .modal-next {
+        right: 10px;
+    }
+}
+
+.modal.transitioning .modal-container {
+    transition: opacity 0.3s ease;
+}
